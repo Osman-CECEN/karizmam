@@ -11,3 +11,6 @@ const ROLE_HOME: Record<UserRole, string> = {
 export function redirectPathForRole(role: UserRole): string {
   return ROLE_HOME[role];
 }
+
+/** Central alias: panel home path for a role. */
+export const redirectByRole = redirectPathForRole;

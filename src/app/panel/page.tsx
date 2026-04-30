@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getCurrentProfile } from "@/lib/auth/getCurrentProfile";
-import { redirectPathForRole } from "@/lib/auth/redirectByRole";
+import { redirectByRole } from "@/lib/auth/redirectByRole";
 
 export const dynamic = "force-dynamic";
 
@@ -17,5 +17,5 @@ export default async function PanelPage() {
   if (!profile.is_active) {
     redirect("/login?reason=inactive");
   }
-  redirect(redirectPathForRole(profile.role));
+  redirect(redirectByRole(profile.role));
 }

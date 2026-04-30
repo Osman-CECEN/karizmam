@@ -11,6 +11,7 @@ export type ProfileRow = {
   id: string;
   full_name: string | null;
   phone: string | null;
+  username: string | null;
   role: UserRole;
   is_active: boolean;
   created_at: string;
@@ -84,15 +85,42 @@ export type MemberTestResultRow = {
   created_at: string;
 };
 
+/** Admin/office list row — excludes identity hashes. */
 export type StudentRow = {
   id: string;
-  profile_id: string;
-  student_code: string | null;
+  profile_id: string | null;
+  student_code: string;
+  full_name: string;
+  phone: string | null;
+  email: string | null;
+  tc_last4: string | null;
+  phone_last4: string | null;
+  username: string | null;
   license_class: string | null;
-  registration_status: string | null;
-  document_status: string | null;
-  payment_status: string | null;
+  registration_status: string;
+  document_status: string;
+  payment_status: string;
+  theory_exam_date: string | null;
+  driving_exam_date: string | null;
   assigned_instructor_id: string | null;
+  notes: string | null;
+  initial_login_used: boolean;
+  must_change_password: boolean;
+  activated_at: string | null;
+  password_reset_at: string | null;
   created_at: string;
   updated_at: string;
+};
+
+export type ProfileLinkOption = {
+  id: string;
+  full_name: string | null;
+  username: string | null;
+  role: UserRole;
+};
+
+export type InstructorOption = {
+  id: string;
+  name: string;
+  role_title: string;
 };

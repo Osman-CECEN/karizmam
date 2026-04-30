@@ -6,12 +6,14 @@ import {
   listStudents,
 } from "@/app/admin/students/actions";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Öğrenciler",
   robots: { index: false, follow: false },
 };
 
-export default async function AdminStudentsPage() {
+export default async function OfficeStudentsPage() {
   const [st, ins, pr] = await Promise.all([
     listStudents(),
     listInstructorsForStudents(),
