@@ -9,10 +9,12 @@ import {
   getWhatsAppHref,
   site,
 } from "@/lib/site";
+import { getSiteOrigin } from "@/lib/site/origin";
 
 export const metadata: Metadata = {
   title: "İletişim",
-  description: `${site.name} ${site.city} iletişim. Telefon, WhatsApp veya ziyaret için aşağıdaki bilgileri kullanın; eksik alanlar kurum tarafından doldurulacaktır.`,
+  description: `${site.name} ${site.city} iletişim: telefon, WhatsApp ve adres bilgileri. Kayıt ve ders planı sorularınız için bize ulaşın.`,
+  alternates: { canonical: `${getSiteOrigin()}/iletisim` },
   openGraph: { title: `İletişim | ${site.name}` },
 };
 
@@ -30,11 +32,8 @@ export default function IletisimPage() {
             İletişim
           </h1>
           <p className="mt-4 text-base font-normal leading-relaxed text-gray-600">
-            Sorularınız, kayıt ve ders planı için aşağıdaki kanallardan
-            bize ulaşabilirsiniz. Aşağıdaki alanlarda metin, kurumun
-            kendi numara ve adresini siteye eklediğinde otomatik
-            güncellenir; şu an doldurulmamışsa açık bilgi metni
-            gösterilir.
+            Sorularınız, kayıt ve ders planı için aşağıdaki kanallardan bize
+            ulaşabilirsiniz.
           </p>
         </div>
       </div>
@@ -93,8 +92,8 @@ export default function IletisimPage() {
                 </a>
               ) : (
                 <p className="mt-1 text-sm leading-relaxed text-gray-600">
-                  WhatsApp numarası site ayarlarına eklendikten sonra
-                  bu satır tıklanabilir hale getirilecektir.
+                  WhatsApp bağlantısı tanımlandığında buradan
+                  ulaşabilirsiniz; şimdilik telefon hattını kullanabilirsiniz.
                 </p>
               )}
             </div>

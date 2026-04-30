@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
-import WhatsappCta from "@/components/WhatsappCta";
 import { site } from "@/lib/site";
+import { getSiteOrigin } from "@/lib/site/origin";
 
 const dmSans = DM_Sans({
   variable: "--font-sans-override",
@@ -13,6 +11,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteOrigin()),
   title: {
     default: `${site.name} | ${site.city}`,
     template: `%s | ${site.name}`,
@@ -34,10 +33,7 @@ export default function RootLayout({
       <body
         className={`${dmSans.className} flex min-h-dvh flex-col antialiased text-ink bg-surface`}
       >
-        <SiteHeader />
-        <div className="flex min-h-0 flex-1 flex-col">{children}</div>
-        <SiteFooter />
-        <WhatsappCta />
+        {children}
       </body>
     </html>
   );

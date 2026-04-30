@@ -6,6 +6,7 @@ const quick = [
   { href: "/b-sinifi-ehliyet", label: "B Sınıfı Ehliyet" },
   { href: "/motosiklet-ehliyeti", label: "Motosiklet Ehliyeti" },
   { href: "/direksiyon-dersi", label: "Direksiyon Dersi" },
+  { href: "/blog", label: "Blog" },
   { href: "/iletisim", label: "İletişim" },
 ] as const;
 
@@ -27,7 +28,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold text-surface">Hızlı bağlantılar</h2>
+            <p className="text-sm font-semibold text-surface">Hızlı bağlantılar</p>
             <ul className="mt-4 space-y-2" role="list">
               {quick.map((l) => (
                 <li key={l.href}>
@@ -43,7 +44,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold text-surface">İletişim</h2>
+            <p className="text-sm font-semibold text-surface">İletişim</p>
             <ul className="mt-4 space-y-3 text-sm" role="list">
               <li className="flex gap-2 text-surface/90">
                 <MapPin

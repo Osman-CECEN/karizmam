@@ -11,10 +11,14 @@ import HomeTrust from "@/components/home/HomeTrust";
 import HomeVehicles from "@/components/home/HomeVehicles";
 import HomeWhy from "@/components/home/HomeWhy";
 import { site } from "@/lib/site";
+import { getSiteOrigin } from "@/lib/site/origin";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Ana Sayfa",
   description: `${site.city}’da sürücü kursu, B sınıfı, motosiklet ve direksiyon eğitimi. Net ve güvenilir süreç, iletişimle dönüşüme yönelik bilgilendirme.`,
+  alternates: { canonical: `${getSiteOrigin()}/` },
   openGraph: { title: `${site.name} | ${site.city}` },
 };
 

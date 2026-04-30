@@ -1,4 +1,5 @@
 import { SafeImage } from "@/components/SafeImage";
+import { site } from "@/lib/site";
 
 export default function HomeAbout() {
   return (
@@ -16,19 +17,19 @@ export default function HomeAbout() {
               Hakkımızda
             </h2>
             <p className="mt-4 text-base leading-relaxed text-gray-600">
-              Kısa kurumsal özet. Karizmam Sürücü Kursu, sürücü adaylarına
-              yönelik örnek açıklama cümleleri burada durur; tüm metinler
-              sonra resmi bilgilerle güncellenecektir.
+              {site.name}, {site.city} merkezinde sürücü adaylarına teorik ve
+              uygulamalı eğitim sunar. Kayıt, ders planı ve sınav süreçlerinde
+              net iletişimi ön planda tutar; her adımda sizi bilgilendiririz.
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-gray-600">
-              Amaç, kayıt ve eğitim hakkında sade bir vitrin. Bu paragraf da
-              yalnızca şablon niteliğindedir.
+            <p className="mt-3 text-base leading-relaxed text-gray-600">
+              B sınıfı ve motosiklet ehliyeti ile direksiyon derslerinde,
+              deneyimli eğitmenlerle güvenli ve ölçülü bir ilerleme hedefleriz.
             </p>
           </div>
           <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md">
             <SafeImage
               src="/images/about.jpg"
-              alt="Hakkımızda bölümü tanıtım görseli"
+              alt={`${site.name} ${site.city} — kurs binası ve eğitim ortamı`}
               sizes="(max-width: 1024px) 100vw, 45vw"
               wrapperClassName="aspect-[4/3] w-full sm:aspect-[3/2] lg:aspect-[4/3]"
             />

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import InnerPageShell from "@/components/InnerPageShell";
 import { site } from "@/lib/site";
+import { getSiteOrigin } from "@/lib/site/origin";
 
 export const metadata: Metadata = {
   title: "Motosiklet Ehliyeti",
   description: `Motosiklet ehliyet aşamaları ve sürücü kursu. ${site.city} Karizmam: kayıt ve sınıf sınırları hakkında güncel bilgiyi birlikte netleştirelim.`,
+  alternates: { canonical: `${getSiteOrigin()}/motosiklet-ehliyeti` },
   openGraph: { title: `Motosiklet Ehliyeti | ${site.name}` },
 };
 

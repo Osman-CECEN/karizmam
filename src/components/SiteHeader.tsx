@@ -10,6 +10,7 @@ const nav = [
   { href: "/b-sinifi-ehliyet", label: "B Sınıfı Ehliyet" },
   { href: "/motosiklet-ehliyeti", label: "Motosiklet Ehliyeti" },
   { href: "/direksiyon-dersi", label: "Direksiyon Dersi" },
+  { href: "/blog", label: "Blog" },
   { href: "/iletisim", label: "İletişim" },
 ] as const;
 

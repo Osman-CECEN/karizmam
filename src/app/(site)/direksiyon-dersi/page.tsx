@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import InnerPageShell from "@/components/InnerPageShell";
 import { site } from "@/lib/site";
+import { getSiteOrigin } from "@/lib/site/origin";
 
 export const metadata: Metadata = {
   title: "Direksiyon Dersi",
   description: `Birebir direksiyon dersi ve sürüş uygulaması. ${site.name}, ${site.city}—ders sıklığı ve ilerleme, ihtiyaca ve mevcut becerinize göre belirlenir.`,
+  alternates: { canonical: `${getSiteOrigin()}/direksiyon-dersi` },
   openGraph: { title: `Direksiyon Dersi | ${site.name}` },
 };
 

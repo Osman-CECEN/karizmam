@@ -3,23 +3,23 @@ import { ChevronDown } from "lucide-react";
 const items = [
   {
     q: "Ehliyet süreci nasıl ilerler?",
-    a: "Örnek açıklama. Genel aşamalar, kayıt ve sınava kadar yol, sonra sizin metninizle güncellenecektir.",
+    a: "Sağlık raporu ve gerekli belgelerle kayıt sonrası teorik eğitim, sınavlar ve direksiyon aşamaları tamamlanır. Resmî takvim ve sınıf yoğunluğu döneme göre değişebileceği için güncel planı kurumumuzdan teyit etmenizi öneririz.",
   },
   {
     q: "Direksiyon dersleri nasıl planlanır?",
-    a: "Taslak: müsaitlik, saat ve tekrar, birlikte netleştirilir. Gerçek metin sonra düzenlenir.",
+    a: "Müsaitliğiniz ve sürüş tecrübenize göre ders sıklığı ve süresi birlikte belirlenir. Birebir uygulamada güvenli sürüş alışkanlıkları ve sınavda değerlendirilen beceriler üzerinde çalışılır.",
   },
   {
     q: "Motosiklet ehliyeti için hangi sınıflar var?",
-    a: "Özet şema metni. Yönetmeliğe göre sınıflar, burada genişletilecektir.",
+    a: "Mevcut yönetmelikteki sınıflar ve yaş koşulları kişiye göre değişir. Hangi sınıfın size uyduğunu netleştirmek için iletişim kanallarımızdan bilgi alabilirsiniz.",
   },
   {
     q: "Kayıt için hangi belgeler gerekir?",
-    a: "Örnek liste alanı. Belge isimleri ve güncel liste iletişimle paylaşılacaktır.",
+    a: "Genel olarak kimlik, ikamet, sağlık raporu ve fotoğraf talep edilir; ek belgeler duruma göre istenebilir. Güncel listeyi kayıt öncesi bizimle paylaşırız.",
   },
   {
     q: "Sınav sürecinde nasıl destek verilir?",
-    a: "Örnek destek açıklaması. Sınava dönük hazırlık, sonra ayrıntılandırılabilir.",
+    a: "Teorik konuların pekiştirilmesi ve uygulamada sınav formatına uygun sürüş alıştırmalarıyla hazırlanmanıza yardımcı oluruz. Her adımda beklentileri gerçekçi şekilde netleştiririz.",
   },
 ] as const;
 
@@ -37,8 +37,8 @@ export default function HomeFaq() {
           Sık sorulan sorular
         </h2>
         <p className="mt-3 max-w-2xl text-base text-gray-600">
-          Cevaplar taslak niteliğindedir; ayrıntılar sonra
-          eklenebilir.
+          Aşağıdaki yanıtlar genel bilgilendirme içindir; kişisel durumunuz için
+          doğrudan iletişime geçmeniz en doğrusudur.
         </p>
         <div className="mx-auto mt-8 max-w-3xl space-y-0">
           {items.map((item) => (
