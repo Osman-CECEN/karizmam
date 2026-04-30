@@ -4,28 +4,31 @@ const cardBase =
   "group relative flex h-full min-h-0 flex-col overflow-hidden rounded-3xl border border-white/[0.14] bg-gradient-to-b from-white/[0.11] to-white/[0.04] p-1 shadow-[0_16px_48px_-16px_rgba(0,0,0,0.6)] outline outline-1 outline-white/[0.07] transition-all duration-300 ease-out motion-safe:hover:z-10 motion-safe:hover:-translate-y-1 motion-safe:hover:scale-[1.02] motion-safe:hover:shadow-[0_24px_56px_-14px_rgba(0,0,0,0.7),0_0_0_1px_rgba(250,204,21,0.28),0_0_56px_-18px_rgba(250,204,21,0.22)] motion-safe:hover:outline-[#FACC15]/40";
 
 /** Sıra ve görseller canlı sitedeki egitmenlerimiz.php ile eşleştirildi (karizmam.com). */
-const topRow = [
-  {
-    name: "Ali ÇEÇEN",
-    role: "Kurucu",
-    image: "/images/instructors/ali-cecen.jpg",
-    featured: true as const,
-  },
+const heroInstructor = {
+  name: "Ali ÇEÇEN",
+  role: "Kurucu",
+  image: "/images/instructors/ali-cecen.jpg",
+} as const;
+
+const midTier = [
   {
     name: "Abdullah TÜRK",
     role: "Direksiyon Sorumlusu",
     image: "/images/instructors/abdullah-turk.jpg",
-    featured: false as const,
   },
+  {
+    name: "Özcan ÇETİN",
+    role: "Halkla İlişkiler",
+    image: "/images/instructors/ozcan-cetin.jpg",
+  },
+] as const;
+
+const gridInstructors = [
   {
     name: "Zöhre EMUR",
     role: "Halkla ilişkiler",
     image: "/images/instructors/zohre-emur.jpg",
-    featured: false as const,
   },
-] as const;
-
-const rest = [
   {
     name: "Meral ERCİL",
     role: "Eğitmen",
@@ -35,11 +38,6 @@ const rest = [
     name: "Yasemin TUNÇOĞLU",
     role: "Eğitmen",
     image: "/images/instructors/yasemin-tuncoglu.jpg",
-  },
-  {
-    name: "Özcan ÇETİN",
-    role: "Eğitmen",
-    image: "/images/instructors/ozcan-cetin.jpg",
   },
   {
     name: "Engin ATABEY",
@@ -63,15 +61,43 @@ const rest = [
   },
 ] as const;
 
+type Tier = "hero" | "mid" | "compact";
+
 type CardProps = {
   name: string;
   role: string;
   image: string;
-  featured: boolean;
+  tier: Tier;
   sizes: string;
 };
 
-function InstructorCard({ name, role, image, featured, sizes }: CardProps) {
+function InstructorCard({ name, role, image, tier, sizes }: CardProps) {
+  const imageWrap =
+    tier === "hero"
+      ? "aspect-[4/5] w-full sm:aspect-[5/6] sm:min-h-[min(22rem,45vh)]"
+      : tier === "mid"
+        ? "aspect-[4/5] w-full sm:aspect-[3/4]"
+        : "aspect-square w-full sm:aspect-[4/5]";
+
+  const titleClass =
+    tier === "hero"
+      ? "text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl"
+      : tier === "mid"
+        ? "text-lg font-bold tracking-tight text-white sm:text-xl"
+        : "text-base font-bold tracking-tight text-white sm:text-lg";
+
+  const bodyPad =
+    tier === "hero"
+      ? "flex flex-1 flex-col px-5 pb-5 pt-4 sm:px-8 sm:pb-7 sm:pt-5"
+      : tier === "mid"
+        ? "flex flex-1 flex-col px-4 pb-4 pt-3 sm:px-6 sm:pb-5 sm:pt-4"
+        : "flex flex-1 flex-col px-3.5 pb-3.5 pt-2.5 sm:px-4 sm:pb-4 sm:pt-3";
+
+  const roleClass =
+    tier === "compact"
+      ? "mt-1 text-xs font-medium leading-snug text-white/60 sm:text-sm"
+      : "mt-1.5 text-sm font-medium leading-snug text-white/60 sm:text-[0.9375rem]";
+
   return (
     <article className={cardBase}>
       <div className="relative w-full overflow-hidden rounded-[1.2rem]">
@@ -80,13 +106,9 @@ function InstructorCard({ name, role, image, featured, sizes }: CardProps) {
           alt={name}
           variant="onDark"
           sizes={sizes}
-          wrapperClassName={
-            featured
-              ? "aspect-[3/4] w-full sm:aspect-[5/6] lg:aspect-[4/5] lg:min-h-[min(28rem,52vh)]"
-              : "aspect-[4/3] w-full sm:aspect-[3/2] lg:aspect-[16/10] lg:min-h-[13rem]"
-          }
+          wrapperClassName={imageWrap}
           className={
-            featured
+            tier === "hero"
               ? "object-cover object-[center_15%]"
               : "object-cover object-center"
           }
@@ -96,33 +118,15 @@ function InstructorCard({ name, role, image, featured, sizes }: CardProps) {
           aria-hidden
         />
       </div>
-      <div
-        className={
-          featured
-            ? "flex flex-1 flex-col px-5 pb-5 pt-4 sm:px-7 sm:pb-6 sm:pt-5"
-            : "flex flex-1 flex-col px-4 pb-4 pt-3 sm:px-5 sm:pb-5 sm:pt-4"
-        }
-      >
-        <h3
-          className={
-            featured
-              ? "text-xl font-bold tracking-tight text-white sm:text-2xl"
-              : "text-lg font-bold tracking-tight text-white sm:text-xl"
-          }
-        >
-          {name}
-        </h3>
-        <p className="mt-1.5 text-sm font-medium leading-snug text-white/60 sm:text-[0.9375rem]">
-          {role}
-        </p>
+      <div className={bodyPad}>
+        <h3 className={titleClass}>{name}</h3>
+        <p className={roleClass}>{role}</p>
       </div>
     </article>
   );
 }
 
 export default function HomeInstructors() {
-  const [ali, abd, zohre] = topRow;
-
   return (
     <section
       className="relative overflow-hidden border-b border-white/10 bg-[#0B2A4A] py-16 md:py-20"
@@ -151,51 +155,50 @@ export default function HomeInstructors() {
           </p>
         </div>
 
-        <ul
-          className="mt-12 grid list-none gap-6 sm:gap-7 lg:mt-14 lg:grid-cols-12 lg:grid-rows-2 lg:gap-8"
-          role="list"
-        >
-          <li className="lg:col-span-7 lg:row-span-2">
+        {/* 1 — Kurucu: tek büyük, ortada */}
+        <div className="mt-12 flex justify-center lg:mt-14">
+          <div className="w-full max-w-md sm:max-w-lg">
             <InstructorCard
-              name={ali.name}
-              role={ali.role}
-              image={ali.image}
-              featured
-              sizes="(max-width: 1024px) 100vw, 58vw"
+              name={heroInstructor.name}
+              role={heroInstructor.role}
+              image={heroInstructor.image}
+              tier="hero"
+              sizes="(max-width: 640px) 100vw, 32rem"
             />
-          </li>
-          <li className="lg:col-span-5 lg:row-start-1">
-            <InstructorCard
-              name={abd.name}
-              role={abd.role}
-              image={abd.image}
-              featured={false}
-              sizes="(max-width: 1024px) 100vw, 42vw"
-            />
-          </li>
-          <li className="lg:col-span-5 lg:row-start-2">
-            <InstructorCard
-              name={zohre.name}
-              role={zohre.role}
-              image={zohre.image}
-              featured={false}
-              sizes="(max-width: 1024px) 100vw, 42vw"
-            />
-          </li>
-        </ul>
+          </div>
+        </div>
 
+        {/* 2 — İki orta seviye kart */}
         <ul
-          className="mt-10 grid list-none gap-6 sm:grid-cols-2 sm:gap-7 lg:mt-12 lg:grid-cols-3 lg:gap-8"
+          className="mx-auto mt-10 grid max-w-4xl list-none gap-6 sm:mt-12 sm:grid-cols-2 sm:gap-7 lg:mt-14"
           role="list"
         >
-          {rest.map((p) => (
+          {midTier.map((p) => (
             <li key={p.name}>
               <InstructorCard
                 name={p.name}
                 role={p.role}
                 image={p.image}
-                featured={false}
-                sizes="(max-width: 768px) 100vw, 33vw"
+                tier="mid"
+                sizes="(max-width: 768px) 100vw, 24rem"
+              />
+            </li>
+          ))}
+        </ul>
+
+        {/* 3 — Eşit küçük kartlar */}
+        <ul
+          className="mt-10 grid list-none gap-5 sm:grid-cols-2 sm:gap-6 md:mt-12 lg:grid-cols-3 lg:gap-7 xl:grid-cols-4"
+          role="list"
+        >
+          {gridInstructors.map((p) => (
+            <li key={p.name}>
+              <InstructorCard
+                name={p.name}
+                role={p.role}
+                image={p.image}
+                tier="compact"
+                sizes="(max-width: 640px) 100vw, 20rem"
               />
             </li>
           ))}
