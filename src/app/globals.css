@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #111111;
+  --color-surface: #ffffff;
+  --color-brand: #facc15;
+  --color-brand-hover: #eab308;
+  --color-brand-foreground: #111111;
+  --color-muted: #525252;
+  --color-line: #e5e5e5;
+  --color-soft: #f5f5f5;
+  --font-sans: var(--font-sans-override, ui-sans-serif, system-ui, sans-serif);
+}
+
+@layer components {
+  .section-px {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .section-y {
+    @apply py-16 md:py-20;
+  }
+  .section-y-hero {
+    @apply py-8 md:py-10 lg:py-12;
+  }
+}
+
+::selection {
+  background-color: var(--color-brand);
+  color: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* İçerik alanı: sade cümle aralıkları, başlık yok (sayfa dışı H1) */
+.prose-article h2 {
+  @apply mt-8 mb-2 first:mt-0 text-lg font-extrabold text-[#111111];
+}
+
+.prose-article h3 {
+  @apply mt-6 mb-2 text-base font-bold text-[#111111];
+}
+
+.prose-article p {
+  @apply text-gray-600;
+}
+
+.prose-article ul {
+  @apply my-2 list-disc pl-5;
+}
+
+.prose-article li {
+  @apply my-1.5;
+}
